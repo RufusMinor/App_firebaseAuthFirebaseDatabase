@@ -41,4 +41,9 @@ public void onDataChange(DataSnapshot dataSnapshot){
         String value=dataSnapshot.child("rint").child("name").getValue(String.class);
         text.setText(value);
     }
+
+
+
+
+
 }
