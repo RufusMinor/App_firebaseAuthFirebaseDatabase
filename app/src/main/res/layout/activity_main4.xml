@@ -4,31 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity4">
+    tools:context=".MainActivity4"
+    android:background="@color/green2">
 
-    <EditText
-        android:id="@+id/nameParty"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:hint="Краткое название"
-        android:layout_marginStart="25dp"
-        android:textSize="20dp"
-        android:fontFamily="@font/aldrich"
-        android:layout_marginTop="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-60dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/createPost"
+        android:textColor="@color/black"
+        android:textSize="41dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/storyParty"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:fontFamily="@font/aldrich"
-        android:hint="Описание"
-        android:textSize="20dp"
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="330dp"
+        android:layout_height="65dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
+        android:background="@drawable/styleediteext"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameParty"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <EditText
+            android:id="@+id/nameParty"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:hint="Название мероприятия"
+            android:textSize="24dp"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/styleediteext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <EditText
+            android:id="@+id/storyParty"
+            android:layout_width="330dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/aldrich"
+            android:hint="Описание"
+            android:inputType="text"
+            android:textSize="20dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="250dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Create"
+        android:background="@drawable/styleediteext"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

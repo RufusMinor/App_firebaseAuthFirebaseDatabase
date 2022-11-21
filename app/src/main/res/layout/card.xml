@@ -26,7 +26,7 @@
           </ImageView>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="210dp"
@@ -35,6 +35,7 @@
                 android:textColor="@color/black"
                 android:text="Авто тусовка!" />
             <TextView
+                android:id="@+id/textPost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="260dp"

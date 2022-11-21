@@ -1,23 +1,21 @@
 package com.example.myapplication7;
 
-import static com.example.myapplication7.MainActivity3.APP_PREFERENCE;
-import static com.example.myapplication7.MainActivity3.APP_PREFERENCE_name;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity4 extends AppCompatActivity {
     DatabaseReference mReference;
     FirebaseDatabase mData;
-    TextView text;
+    EditText partyName, partyStory;
+    Button btnCreate;
 
 
     @Override
@@ -27,20 +25,26 @@ public class MainActivity4 extends AppCompatActivity {
 
         mReference=FirebaseDatabase.getInstance().getReference();
 
-        text=(TextView) findViewById(R.id.nameParty);
-        SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCE, Context.MODE_PRIVATE);
-        String login1=sharedPreferences.getString(APP_PREFERENCE_name,"");
-        text.setText(login1);
-        mReference.child(login1).child("nameParty").setValue("Uh");
-
+        partyName=(EditText) findViewById(R.id.nameParty);
+        partyStory=(EditText) findViewById(R.id.storyParty);
+        btnCreate=(Button) findViewById(R.id.create);
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNewPost(partyName.getText().toString(),partyStory.getText().toString());
+            }
+        });
 
 
     }
 
-public void onDataChange(DataSnapshot dataSnapshot){
-        String value=dataSnapshot.child("rint").child("name").getValue(String.class);
-        text.setText(value);
-    }
+private void createNewPost(String partyName, String partyStory){
+    String uid = FirebaseAuth.getInstance().getUid();
+
+    mReference.child("Post").child(uid).child(partyName).child("nameParty").setValue(partyName);
+    mReference.child("Post").child(uid).child(partyName).child("nameStory").setValue(partyStory);
+
+}
 
 
 
