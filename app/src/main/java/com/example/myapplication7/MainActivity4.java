@@ -41,8 +41,9 @@ public class MainActivity4 extends AppCompatActivity {
 private void createNewPost(String partyName, String partyStory){
     String uid = FirebaseAuth.getInstance().getUid();
 
-    mReference.child("Post").child(uid).child(partyName).child("nameParty").setValue(partyName);
-    mReference.child("Post").child(uid).child(partyName).child("nameStory").setValue(partyStory);
+    mReference.child("user").child(uid).child("post").child(partyName).child("nameParty").setValue(partyName);
+    mReference.child("user").child(uid).child("post").child(partyName).child("nameStory").setValue(partyStory);
+    //mReference.child("user").child(partyName).child("UID").setValue(uid);
 
 }
 

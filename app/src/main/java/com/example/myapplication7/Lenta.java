@@ -19,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -60,25 +59,30 @@ private TextView postText;
 
 
 }
-
-
-
 private void showPost(View view){
-        mDatabase= FirebaseDatabase.getInstance().getReference("Post");
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("user");
         String uid = FirebaseAuth.getInstance().getUid();
-        Query query=mDatabase.child("/").child("/");
-        query.addValueEventListener(new ValueEventListener(){
+        //Query query=mDatabase.orderByChild("post/");
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
     public void onDataChange(@NonNull DataSnapshot snapshot){
-                Log.d("DB","Метод раотает ");
-if (snapshot.exists()){
+                Log.d("DB","Метод работает ");
     for(DataSnapshot ds:snapshot.getChildren()){
-        String title=ds.child("nameParty").getValue(String.class);
-        String textPost=ds.child("nameStory").getValue(String.class);
-        Log.d("DB","На "+title+textPost);
-        addPost(title,textPost);
+        DataSnapshot postSnapshot=ds.child("post");
+        for(DataSnapshot postSnapsh:postSnapshot.getChildren()){
+            Log.d("DB","На "+postSnapsh.child("nameParty").getValue(String.class));
+            String title=postSnapsh.child("nameParty").getValue(String.class);
+            String text=postSnapsh.child("nameStory").getValue(String.class);
+            addPost(title,text);
+        }
+//        String key= ds.getKey();
+//        Query query=mDatabase.child(key).child("post");
+//        String title=ds.child("nameParty").getValue(String.class);
+//        String textPost=ds.child("nameStory").getValue(String.class);
+//        Log.d("DB","На "+title+textPost);
+//        addPost(title,textPost);
     }
-}
+
             }
 
             @Override
