@@ -11,6 +11,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity4 extends AppCompatActivity {
     DatabaseReference mReference;
     FirebaseDatabase mData;
@@ -40,9 +44,13 @@ public class MainActivity4 extends AppCompatActivity {
 
 private void createNewPost(String partyName, String partyStory){
     String uid = FirebaseAuth.getInstance().getUid();
+    Calendar nowDate=Calendar.getInstance();
+    Date datePost1=nowDate.getTime();
+    String datePost=new SimpleDateFormat("dd-MM-yyyy").format(datePost1);
 
-    mReference.child("user").child(uid).child("post").child(partyName).child("nameParty").setValue(partyName);
-    mReference.child("user").child(uid).child("post").child(partyName).child("nameStory").setValue(partyStory);
+    mReference.child("user").child(uid).child("post").child(datePost).child("nameParty").setValue(partyName);
+    mReference.child("user").child(uid).child("post").child(datePost).child("nameStory").setValue(partyStory);
+    mReference.child("user").child(uid).child("post").child(datePost).child("dateParty").setValue(datePost);
     //mReference.child("user").child(partyName).child("UID").setValue(uid);
 
 }
