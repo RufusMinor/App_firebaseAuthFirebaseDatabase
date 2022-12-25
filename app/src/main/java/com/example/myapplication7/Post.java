@@ -4,15 +4,31 @@ import java.io.Serializable;
 
 public class Post implements Serializable {
 
-    public String nameParty,nameStory,datePost, key;
-    //public int key;
+    public String nameParty,nameStory, key;
+    int datePost;
 
 
     public Post(){
 
     }
 
-    public Post( String nameParty, String nameStory,String datePost, String key) {
+    public String getNameParty() {
+        return nameParty;
+    }
+
+    public String getNameStory() {
+        return nameStory;
+    }
+
+    public int getDatePost() {
+        return datePost;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public Post(String nameParty, String nameStory, int datePost, String key) {
 
         this.nameParty = nameParty;
         this.nameStory = nameStory;

@@ -37,7 +37,7 @@ private TextView titleText;
     DatabaseReference mDatabase;
 private RecyclerView recyclerView;
 private List<Post> result;
-private UserAdapter userAdapter;
+private PostAdapter userAdapter;
 
 
 
@@ -56,7 +56,7 @@ private UserAdapter userAdapter;
 
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        userAdapter=new UserAdapter(result);
+        userAdapter=new PostAdapter(result);
         recyclerView.setAdapter(userAdapter);
 
 
@@ -74,7 +74,7 @@ private UserAdapter userAdapter;
     }
 
     private  void addParty(){
-        Intent intent=new Intent(getContext(),MainActivity4.class);
+        Intent intent=new Intent(getContext(), CreatePost.class);
         startActivity(intent);
 
 
@@ -84,7 +84,7 @@ private UserAdapter userAdapter;
 
     private void updateList(DatabaseReference mDatabase){
         Log.d("Post", "в метод заходит");
-        Query query=mDatabase.orderByChild("key");
+        Query query=mDatabase.orderByChild("datePost");
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -96,8 +96,8 @@ private UserAdapter userAdapter;
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 for(DataSnapshot postSnapshot:snapshot.getChildren()){
                     Post post=postSnapshot.getValue(Post.class);
-                    String s=post.datePost;
-                    Log.d("Post","На "+s);
+                    //String s=post.datePost;
+                    //Log.d("Post","На "+s);
                 }
 
             }

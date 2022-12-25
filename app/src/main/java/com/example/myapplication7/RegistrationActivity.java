@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity3 extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     public TextInputEditText nameUser,pass,email,age,login;
     public Button btnReg, btn, btnSing;
@@ -92,11 +92,11 @@ public class MainActivity3 extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                    if (task.isSuccessful()) {
                                        Log.d("Tag","Создано нахуй!");
-                                       Toast.makeText(MainActivity3.this, "Успешно!",
+                                       Toast.makeText(RegistrationActivity.this, "Успешно!",
                                                Toast.LENGTH_SHORT).show();
                                     FirebaseUser user=mAuth.getCurrentUser();
                                     //updateUi(user);
-                                        Intent intent=new Intent(MainActivity3.this,MainActivity5.class);
+                                        Intent intent=new Intent(RegistrationActivity.this,MainActivity5.class);
                                         startActivity(intent);
                                      }
                                 }

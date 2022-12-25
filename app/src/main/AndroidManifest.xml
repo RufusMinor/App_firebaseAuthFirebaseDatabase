@@ -20,16 +20,13 @@
             android:name=".MainActivity5"
             android:exported="false" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".CreatePost"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

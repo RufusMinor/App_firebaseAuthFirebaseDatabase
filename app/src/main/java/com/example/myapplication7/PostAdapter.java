@@ -9,13 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
+public class PostAdapter extends RecyclerView.Adapter<PostAdapter.UserViewHolder> {
 
-    private List<Post> list;
+    private List<Post> list,listCompare;
 
-    public UserAdapter(List<Post> list) {
+
+    public PostAdapter(List<Post> list) {
         this.list = list;
     }
 
@@ -27,11 +30,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        Comparator sort1=new SortByTime();
+        Collections.sort(list,sort1);
         Post userPost= list.get(position);
         holder.titleText.setText(userPost.nameParty);
         Log.d("Post", "На держи с адаптера "+userPost.nameParty);
         holder.storyText.setText(userPost.nameStory);
-        holder.dateText.setText(userPost.datePost);
+        //String datePostInt=userPost.datePost.toString();
+        //holder.dateText.setText(userPost.datePost);
     }
 
     @Override

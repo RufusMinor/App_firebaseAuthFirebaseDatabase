@@ -47,7 +47,7 @@ public TextView reg1;
         reg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent=new Intent(SingInActivity.this, MainActivity3.class);
+            Intent intent=new Intent(SingInActivity.this, RegistrationActivity.class);
             startActivity(intent);
             }
         });
