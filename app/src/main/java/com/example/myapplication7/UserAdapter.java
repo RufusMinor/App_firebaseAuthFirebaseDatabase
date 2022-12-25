@@ -31,6 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.titleText.setText(userPost.nameParty);
         Log.d("Post", "На держи с адаптера "+userPost.nameParty);
         holder.storyText.setText(userPost.nameStory);
+        holder.dateText.setText(userPost.datePost);
     }
 
     @Override
@@ -40,12 +41,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     class UserViewHolder extends RecyclerView.ViewHolder{
 
-        TextView titleText,storyText;
+        TextView titleText,storyText, dateText;
 
         public UserViewHolder(View itemView){
             super(itemView);
             titleText=(TextView)itemView.findViewById(R.id.textTitle);
             storyText=(TextView) itemView.findViewById(R.id.textPost);
+            dateText=(TextView) itemView.findViewById(R.id.date);
 
         }
     }

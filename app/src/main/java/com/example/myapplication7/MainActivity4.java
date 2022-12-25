@@ -27,7 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
-        mReference=FirebaseDatabase.getInstance().getReference();
+        mReference=FirebaseDatabase.getInstance().getReference("post");
 
         partyName=(EditText) findViewById(R.id.nameParty);
         partyStory=(EditText) findViewById(R.id.storyParty);
@@ -47,11 +47,14 @@ private void createNewPost(String partyName, String partyStory){
     Calendar nowDate=Calendar.getInstance();
     Date datePost1=nowDate.getTime();
     String datePost=new SimpleDateFormat("dd-MM-yyyy").format(datePost1);
+    String key=new SimpleDateFormat("HH-mm-dd-MM-yyyy").format(datePost1);
+    Post post=new Post(partyName,partyStory,datePost,key);
+        mReference.child(partyName).setValue(post);
+//    mReference.child(partyName).child("nameStory").setValue(partyStory);
+//    mReference.child(partyName).child("datePost").setValue(datePost);
+//    mReference.child(partyName).child("nameParty").setValue(partyName);
 
-    mReference.child("user").child(uid).child("post").child(datePost).child("nameParty").setValue(partyName);
-    mReference.child("user").child(uid).child("post").child(datePost).child("nameStory").setValue(partyStory);
-    mReference.child("user").child(uid).child("post").child(datePost).child("dateParty").setValue(datePost);
-    //mReference.child("user").child(partyName).child("UID").setValue(uid);
+
 
 }
 
