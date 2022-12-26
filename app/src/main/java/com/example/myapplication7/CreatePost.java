@@ -44,14 +44,14 @@ public class CreatePost extends AppCompatActivity {
 
 private void createNewPost(String partyName, String partyStory){
     Long tsLong = System.currentTimeMillis()/1000;
-    int datePost = Integer.parseInt(tsLong.toString());
+    int timeStamp = Integer.parseInt(tsLong.toString());
 
     String uid = FirebaseAuth.getInstance().getUid();
     Calendar nowDate=Calendar.getInstance();
     Date datePost1=nowDate.getTime();
-    //String datePost=new SimpleDateFormat("yyyy-MM-dd").format(datePost1);
-    String key=new SimpleDateFormat("HH-mm-dd-MM-yyyy").format(datePost1);
-    Post post=new Post(partyName,partyStory,datePost,key);
+    //String datePost=new SimpleDateFormat("yyyy-MM-dd"').format(datePost1);
+    String datePost=new SimpleDateFormat("HH:mm  dd-MM-yyyy").format(datePost1);
+    Post post=new Post(partyName,partyStory,timeStamp,datePost);
         mReference.child(partyName).setValue(post);
 //    mReference.child(partyName).child("nameStory").setValue(partyStory);
 //    mReference.child(partyName).child("datePost").setValue(datePost);

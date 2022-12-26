@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Post implements Serializable {
 
-    public String nameParty,nameStory, key;
-    int datePost;
+    public String nameParty,nameStory, datePost;
+    int timeStamp;
 
 
     public Post(){
@@ -20,19 +20,19 @@ public class Post implements Serializable {
         return nameStory;
     }
 
-    public int getDatePost() {
+    public int getTimeStamp() {
+        return timeStamp;
+    }
+
+    public String getDatePost() {
         return datePost;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public Post(String nameParty, String nameStory, int datePost, String key) {
+    public Post(String nameParty, String nameStory, int timeStamp, String datePost) {
 
         this.nameParty = nameParty;
         this.nameStory = nameStory;
+        this.timeStamp=timeStamp;
         this.datePost=datePost;
-        this.key=key;
     }
 }

@@ -37,7 +37,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.UserViewHolder
         Log.d("Post", "На держи с адаптера "+userPost.nameParty);
         holder.storyText.setText(userPost.nameStory);
         //String datePostInt=userPost.datePost.toString();
-        //holder.dateText.setText(userPost.datePost);
+        holder.dateText.setText(userPost.datePost);
     }
 
     @Override
