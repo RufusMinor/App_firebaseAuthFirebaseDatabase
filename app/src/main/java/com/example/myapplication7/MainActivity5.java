@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.myapplication7.Profile.Profile;
 import com.example.myapplication7.databinding.ActivityMain5Binding;
 
 public class MainActivity5 extends AppCompatActivity {
@@ -34,7 +35,7 @@ public class MainActivity5 extends AppCompatActivity {
                     replaceFragment(new Group());
                     break;
                 case R.id.setting:
-                    replaceFragment(new Settings());
+                    replaceFragment(new Profile());
                     break;
             }
             return true;
@@ -42,7 +43,7 @@ public class MainActivity5 extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
