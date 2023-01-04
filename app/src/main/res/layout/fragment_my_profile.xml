@@ -3,12 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Profile.MyProfile">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/profileImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/i"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/white2"
+        >
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/nameUserProfile"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:text="Евгений Мызников" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Email Adress"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextNAme"
+        android:layout_marginTop="370dp"
+        android:layout_marginStart="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Name User"
+        android:ems="10"
+        android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_marginTop="440dp"
+        android:layout_marginStart="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="Last name User"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="225dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_baseline_cloud_upload_24" />
+
 
 </FrameLayout>

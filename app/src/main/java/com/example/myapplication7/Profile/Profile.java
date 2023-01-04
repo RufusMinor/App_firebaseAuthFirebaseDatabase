@@ -42,14 +42,18 @@ public class Profile extends Fragment {
 
                 if (i == 0) {
                     replaceFragment(new MyProfile());
-                } else if (i == 1) {
-
-                } else if (i == 2) {
-
-                } else if (i == 3) {
-
-                } else if (i == 4) {
-
+                }
+                else if (i == 1) {
+                    replaceFragment(new PrivateSettings());
+                }
+                else if (i == 2) {
+                    replaceFragment(new Language());
+                }
+                else if (i == 3) {
+                    replaceFragment(new Settings());
+                }
+                else if (i == 4) {
+                    replaceFragment(new Exit());
                 }
 
             }

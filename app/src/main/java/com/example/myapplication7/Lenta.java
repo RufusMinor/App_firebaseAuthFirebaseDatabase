@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ private TextView titleText;
 private RecyclerView recyclerView;
 private List<Post> result;
 private PostAdapter userAdapter;
+private EditText email;
 
 
 
@@ -48,6 +50,8 @@ private PostAdapter userAdapter;
 
         binding = FragmentLentaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        email=(EditText)root.findViewById(R.id.editTextTextEmailAddress);
 
         result=new ArrayList<>();
         recyclerView=(RecyclerView)root.findViewById(R.id.recyclerLenta);
@@ -95,9 +99,12 @@ private PostAdapter userAdapter;
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 for(DataSnapshot postSnapshot:snapshot.getChildren()){
-                    Post post=postSnapshot.getValue(Post.class);
-                    //String s=post.datePost;
-                    //Log.d("Post","На "+s);
+                    Post post= postSnapshot.getValue(Post.class);
+                    String s=post.datePost;
+                    email.setText(post.nameParty);
+                    Log.d("Post","На "+s);
+
+
                 }
 
             }
