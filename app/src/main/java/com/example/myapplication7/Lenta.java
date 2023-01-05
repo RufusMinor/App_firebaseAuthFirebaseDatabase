@@ -94,6 +94,9 @@ private EditText email;
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 result.add(snapshot.getValue(Post.class));
                 userAdapter.notifyDataSetChanged();
+                Post post= snapshot.getValue(Post.class);
+                String s=post.datePost;
+                Log.d("Post","На "+s);
             }
 
             @Override

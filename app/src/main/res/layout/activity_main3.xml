@@ -50,23 +50,22 @@
 
     <com.google.android.material.textfield.TextInputLayout
 
-        android:id="@+id/textInputLayout"
+        android:id="@+id/phoneNumber1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginTop="25dp"
-
-        android:hint="Age"
+        android:hint="Phone Number"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/age"
+            android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
+            android:inputType="number"
             android:textSize="16dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -81,7 +80,7 @@
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login">
+        app:layout_constraintTop_toBottomOf="@+id/editlastName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEdit"
@@ -108,11 +107,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login"
+        android:id="@+id/editlastName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:hint="Login"
+        android:hint="Last Name"
         android:layout_marginTop="180dp"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/loginEdit"
+            android:id="@+id/lastName"
             android:inputType="text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

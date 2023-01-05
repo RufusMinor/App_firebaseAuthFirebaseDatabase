@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    public TextInputEditText nameUser,pass,email,age,login;
+    public TextInputEditText nameUser,pass,email,lastName,login,phoneNumber;
     public Button btnReg, btn, btnSing;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -39,12 +39,11 @@ public class RegistrationActivity extends AppCompatActivity {
         mSettings=getSharedPreferences(APP_PREFERENCE,MODE_PRIVATE);
 
 
-        login=(TextInputEditText)findViewById(R.id.loginEdit);
-        String log=login.getText().toString();
+        lastName=(TextInputEditText)findViewById(R.id.lastName);
 
         mAuth=FirebaseAuth.getInstance();
-        mDatabase=FirebaseDatabase.getInstance().getReference(login.getText().toString());
-        age=(TextInputEditText)findViewById(R.id.age);
+        mDatabase= FirebaseDatabase.getInstance().getReference("user");
+        phoneNumber=(TextInputEditText)findViewById(R.id.phoneNumber);
         nameUser=(TextInputEditText) findViewById(R.id.nameEdit);
         email=(TextInputEditText) findViewById(R.id.emailEdit);
         pass=(TextInputEditText) findViewById(R.id.passEdit);
@@ -54,14 +53,12 @@ public class RegistrationActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createAccount(email.getText().toString(),pass.getText().toString());
-                addUser(nameUser.getText().toString(),age.getText().toString(),email.getText().toString());
-
+                createAccount(email.getText().toString(),pass.getText().toString(),nameUser.getText().toString(),lastName.getText().toString(),phoneNumber.getText().toString());
 //Сохраняем в SharedPreference логин пользователя введенный при регистрации
-                    String sharedLogin=login.getText().toString();
-                    SharedPreferences.Editor editor=mSettings.edit();
-                    editor.putString(APP_PREFERENCE_name,sharedLogin);
-                    editor.apply();
+//                    String sharedLogin=login.getText().toString();
+//                    SharedPreferences.Editor editor=mSettings.edit();
+//                    editor.putString(APP_PREFERENCE_name,sharedLogin);
+//                    editor.apply();
 
 
 
@@ -71,9 +68,6 @@ public class RegistrationActivity extends AppCompatActivity {
         });
 
 
-//        btn=(Button)findViewById(R.id.button);
-//        Intent intent=new Intent(MainActivity3.this,MainActivity4.class);
-//        startActivity(intent);
 
 
     }
@@ -85,17 +79,21 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
 
-    private void createAccount(String email, String password){
+    private void createAccount(String email, String password,String lastName,String phoneNumber,String name){
                     mAuth.createUserWithEmailAndPassword(email,password)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                    if (task.isSuccessful()) {
+
                                        Log.d("Tag","Создано нахуй!");
                                        Toast.makeText(RegistrationActivity.this, "Успешно!",
                                                Toast.LENGTH_SHORT).show();
                                     FirebaseUser user=mAuth.getCurrentUser();
                                     //updateUi(user);
+                                       String uid = FirebaseAuth.getInstance().getUid();
+                                       User userReg=new User(name,email,lastName,phoneNumber);
+                                       mDatabase.child(uid).setValue(userReg);
                                         Intent intent=new Intent(RegistrationActivity.this,MainActivity5.class);
                                         startActivity(intent);
                                      }
@@ -103,12 +101,6 @@ public class RegistrationActivity extends AppCompatActivity {
                             });
     }
 
-    private void addUser(String name,String age, String email) {
-        mDatabase.child(login.getText().toString()).child("name").setValue(name);
-        mDatabase.child(login.getText().toString()).child("age").setValue(age);
-        mDatabase.child(login.getText().toString()).child("email").setValue(email);
-        mDatabase.child(login.getText().toString()).child("nameParty").setValue(null);
-    }
 
 
 

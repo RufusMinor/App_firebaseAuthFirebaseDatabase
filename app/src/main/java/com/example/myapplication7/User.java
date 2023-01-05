@@ -1,7 +1,29 @@
 package com.example.myapplication7;
 
-public class User {
-    String name,lastName,email,phoneNumber;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    String name;
+    String lastName;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    String email;
+    String phoneNumber;
 
     public User(){}
 
