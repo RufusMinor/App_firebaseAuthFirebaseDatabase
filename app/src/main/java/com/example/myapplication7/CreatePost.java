@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,18 +21,21 @@ public class CreatePost extends AppCompatActivity {
     FirebaseDatabase mData;
     EditText partyName, partyStory;
     Button btnCreate;
+    private ImageView postPhoto;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.activity_createpost);
 
         mReference=FirebaseDatabase.getInstance().getReference("post");
 
         partyName=(EditText) findViewById(R.id.nameParty);
         partyStory=(EditText) findViewById(R.id.storyParty);
         btnCreate=(Button) findViewById(R.id.create);
+        postPhoto=(ImageView)findViewById(R.id.postPhoto);
+
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
